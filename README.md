@@ -1,4 +1,4 @@
-Este es un projecto hecho para todos los que omparten sus niveles de mario builder 64.  
+Este es un projecto hecho para todos los que comparten sus niveles de mario builder 64.  
 Este programa les permitira cargar sus niveles y los de la pagina web oficial a su juego de forma interactiva.  
 Recuerden que antes de iniciar el programa deben corroborar que la sd virtual del emulador que utilizan este activa.  
 ¿como saben esto? Si en este equipo aparece una unidad nueva llamada "AUTO0" o similar, esa es.  
