@@ -109,7 +109,7 @@ class Navegador(QMainWindow):
         toolbar_layout.setContentsMargins(5, 5, 5, 5)  # Márgenes internos
         
         # 1. Botón Atrás (tamaño compacto)
-        self.back_button = QPushButton("←")
+        self.back_button = QPushButton("<")
         self.back_button.setFixedSize(40, 30)  # Tamaño fijo pequeño
         self.back_button.setToolTip("Volver atrás")
         self.back_button.clicked.connect(self.go_back)
@@ -126,6 +126,14 @@ class Navegador(QMainWindow):
         self.upload_button.clicked.connect(self.upload_file)
         toolbar_layout.addWidget(self.upload_button)
         
+        toolbar_layout.addSpacerItem(QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
+        
+        self.forward_button = QPushButton(">")
+        self.forward_button.setFixedSize(40, 30)
+        self.forward_button.setToolTip("Ir adelante")
+        self.forward_button.clicked.connect(self.go_forward)
+        toolbar_layout.addWidget(self.forward_button)
+
         # Configuración final de la barra
         toolbar.setLayout(toolbar_layout)
         toolbar.setFixedHeight(50)  # Altura fija para toda la barra
@@ -148,6 +156,10 @@ class Navegador(QMainWindow):
         button_width = min(200, self.width() // 4)  # Máximo 200px o 25% del ancho
         self.upload_button.setFixedWidth(button_width)
         super().resizeEvent(event)
+    def go_forward(self):
+        """Navega a la siguiente página en el historial"""
+        if self.browser.history().canGoForward():
+            self.browser.forward()
     def go_back(self):
         """Navega a la página anterior en el historial"""
         if self.browser.history().canGoBack():
